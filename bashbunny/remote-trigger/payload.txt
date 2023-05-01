@@ -1,0 +1,27 @@
+# Title:          BashBunny Remote Triggers
+# Description:    a POC for remote triggering
+# Author:         Blue Cosmo
+# Category:       POC
+# Target:         Windows 10
+# Attackmodes:    HID
+
+# hello world payload
+
+# configure bash bunny
+LED SETUP
+ATTACKMODE HID
+
+# replace "device" with your bluetooth device
+WAIT_FOR_PRESENT device
+# WAIT_FOR_NOT_PRESENT is also an option
+
+# open notepad
+LED STAGE1
+RUN WIN notepad.exe
+
+# write "hello, world" to notepad
+LED STAGE2
+QUACK DELAY 400
+QUACK STRING Hello, World!
+
+LED FINISH

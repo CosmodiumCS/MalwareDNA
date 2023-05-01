@@ -1,0 +1,21 @@
+# Title:          Hello, World!
+# Description:    opens notepad, types "Hello, World!"
+# Author:         Blue Cosmo [Chris Taylor]
+# Category:       poc
+# Target:         Windows 10
+# Attackmodes:    HID
+
+# configures bunny
+LED SETUP
+ATTACKMODE HID
+
+# opens notepad
+LED STAGE1
+RUN WIN Notepad.exe
+
+# write content to notepad
+LED STAGE2
+QUACK DELAY 400
+QUACK STRING Hello, World!
+
+LED FINISH

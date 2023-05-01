@@ -1,0 +1,13 @@
+REM opens website
+REM Created by : C0SM0
+
+REM allocate time for recognition
+DELAY 1000
+
+REM open runbox
+GUI r
+DELAY 100
+
+REM open website
+STRING www.cosmodiumcs.com
+ENTER
