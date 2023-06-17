@@ -1,0 +1,21 @@
+# Title:          Bash Bunny Geofencing
+# Description:    a POC for geofencing
+# Author:         Blue Cosmo
+# Category:       POC
+# Target:         Windows 10
+# Attackmodes:    HID
+
+# website opener payload
+
+# configure bash bunny
+LED SETUP
+ATTACKMODE HID
+
+# replace "device" with your bluetooth device
+WAIT_FOR_PRESENT device
+
+# opens website [ccs]
+LED STAGE1
+RUN WIN www.cosmodiumcs.com
+
+LED FINISH

