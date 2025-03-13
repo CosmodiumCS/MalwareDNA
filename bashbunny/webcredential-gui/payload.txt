@@ -1,0 +1,30 @@
+LED SETUP
+
+GET SWITCH_POSITION
+
+ATTACKMODE HID STORAGE
+
+
+if [ -f "/root/udisk/payloads/${SWITCH_POSITION}/ducky-script.txt" ]; then
+
+
+#Call ducky script
+LED STAGE1
+
+
+QUACK ${SWITCH_POSITION}/ducky-script.txt
+
+QUACK DELAY 10000
+
+LED FINISH
+
+else
+
+LED FAIL
+
+#Red LED if unable to load script
+echo "Unable to load ducky-script.txt" >> /root/debuglog.txt
+
+exit 1
+
+fi
